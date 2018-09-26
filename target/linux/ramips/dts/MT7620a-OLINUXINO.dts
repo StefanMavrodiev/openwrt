@@ -1,0 +1,95 @@
+/dts-v1/;
+
+#include "mt7620a.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	compatible = "olimex,mt7620a-olinuxino", "ralink,mt7620a-soc";
+	model = "Olimex MT7620a-OLinuXino";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&gpio2 {
+	status = "okay";
+};
+
+&gpio3 {
+	status = "okay";
+};
+
+&spi0 {
+	status = "okay";
+
+	m25p80@0 {
+		compatible = "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <10000000>;
+
+		partitions {
+			compatible = "fixed-partitions";
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			partition@0 {
+				label = "u-boot";
+				reg = <0x0 0x30000>;
+				read-only;
+			};
+
+			partition@30000 {
+				label = "u-boot-env";
+				reg = <0x30000 0x10000>;
+				read-only;
+			};
+
+			factory: partition@40000 {
+				label = "factory";
+				reg = <0x40000 0x10000>;
+				read-only;
+			};
+
+			partition@50000 {
+				label = "firmware";
+				reg = <0x50000 0xfb0000>;
+			};
+		};
+	};
+};
+
+&pinctrl {
+	state_default: pinctrl0 {
+		gpio {
+			ralink,group = "uartf", "spi refclk", "i2c", "ephy", "rgmii1", "rgmii2", "pcie", "pa";
+			ralink,function = "gpio";
+		};
+
+		refclk {
+			ralink,group = "mdio";
+			ralink,function = "refclk";
+		};
+
+		wifi {
+			ralink,group = "wled";
+			ralink,function = "wled";
+		};
+	};
+};
+
+&sdhci {
+	status = "okay";
+};
+
+&wmac {
+	/* pinctrl-names = "default";
+	pinctrl-0 = <&wled_pins>; */
+	ralink,mtd-eeprom = <&factory 0>;
+};

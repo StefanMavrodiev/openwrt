@@ -384,6 +384,13 @@ define Device/mt7620a_mt7610e
 endef
 TARGET_DEVICES += mt7620a_mt7610e
 
+define Device/mt7620a-olinuxino
+  DTS := MT7620a-OLINUXINO
+  DEVICE_PACKAGES := kmod-mmc kmod-sdhci kmod-sdhci-mt7620
+  DEVICE_TITLE := Olimex MT7620A-OLinuXno
+endef
+TARGET_DEVICES += mt7620a-olinuxino
+
 define Device/mt7620a_v22sg
   DTS := MT7620a_V22SG
   DEVICE_TITLE := MediaTek MT7620a V22SG
@@ -686,7 +693,7 @@ define Device/zbt-we826-16M
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
   SUPPORTED_DEVICES += zbt-we826
   DEVICE_TITLE := Zbtlink ZBT-WE826 (16M)
-  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-mt76 kmod-sdhci-mt7620 
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-mt76 kmod-sdhci-mt7620
 endef
 TARGET_DEVICES += zbt-we826-16M
 

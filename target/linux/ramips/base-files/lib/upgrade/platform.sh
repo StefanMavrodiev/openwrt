@@ -108,6 +108,7 @@ platform_check_image() {
 	mpr-a1|\
 	mpr-a2|\
 	mr-102n|\
+	mt7620a-olinuxino|\
 	mt7628|\
 	mzk-750dhp|\
 	mzk-dp150n|\

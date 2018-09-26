@@ -325,6 +325,9 @@ ramips_board_detect() {
 	*"MT7620a V22SG"*)
 		name="mt7620a_v22sg"
 		;;
+	*"MT7620a-OLinuXino"*)
+		name="mt7620a-olinuxino";
+		;;
 	*"MT7621 evaluation"*)
 		name="mt7621"
 		;;
